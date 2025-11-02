@@ -218,29 +218,34 @@ export default function LifelineRetention() {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <a href="/" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6 font-medium transition-colors">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Dashboard
-          </a>
-          
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-xl">
-              <Heart className="w-8 h-8 text-white" />
+      {/* Enhanced Header */}
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
+                <Heart className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  Lifeline Retention Agent
+                </h1>
+              </div>
             </div>
-            <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                Lifeline Retention Agent
-              </h1>
-            </div>
+            <a href="/" className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Dashboard
+            </a>
           </div>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left: Lead Selection & Policy Health */}
-          <div className="space-y-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Left: Lead Selection & Policy Health */}
+            <div className="lg:col-span-4 space-y-6">
             {/* Lead Selection */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Select Customer</h2>
@@ -325,11 +330,38 @@ export default function LifelineRetention() {
             )}
           </div>
 
-          {/* Right: Life Events & Actions */}
-          <div className="lg:col-span-2 space-y-6">
+            {/* Right: Life Events & Actions */}
+            <div className="lg:col-span-8 space-y-6">
+            {/* Tab Selector */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-2 border border-gray-200">
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setActiveTab('life_events')}
+                  className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${
+                    activeTab === 'life_events'
+                      ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  Life Events
+                </button>
+                <button
+                  onClick={() => setActiveTab('occasions')}
+                  className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${
+                    activeTab === 'occasions'
+                      ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  Occasions
+                </button>
+              </div>
+            </div>
+
             {/* Trigger Life Event */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Trigger Life Event</h2>
+            {activeTab === 'life_events' && (
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4">Trigger Life Event</h2>
               
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -381,13 +413,15 @@ export default function LifelineRetention() {
                 </button>
               </div>
             </div>
+            )}
 
             {/* Trigger Occasions */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-100">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-purple-600" />
-                Trigger Occasion
-              </h2>
+            {activeTab === 'occasions' && (
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-100">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-purple-600" />
+                  Trigger Occasion
+                </h2>
               
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -439,10 +473,12 @@ export default function LifelineRetention() {
                 </button>
               </div>
             </div>
+            )}
 
             {/* Life Events List */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Recent Life Events</h2>
+            {activeTab === 'life_events' && (
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-blue-100">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4">Recent Life Events</h2>
               
               <div className="space-y-4 max-h-[600px] overflow-y-auto">
                 {lifeEvents.length === 0 ? (
@@ -508,13 +544,15 @@ export default function LifelineRetention() {
                 )}
               </div>
             </div>
+            )}
 
             {/* Occasions List */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-100">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-purple-600" />
-                Recent Occasions
-              </h2>
+            {activeTab === 'occasions' && (
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-purple-100">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-purple-600" />
+                  Recent Occasions
+                </h2>
               
               <div className="space-y-4 max-h-[600px] overflow-y-auto">
                 {occasions.length === 0 ? (
@@ -580,6 +618,8 @@ export default function LifelineRetention() {
                   ))
                 )}
               </div>
+            </div>
+            )}
             </div>
           </div>
         </div>

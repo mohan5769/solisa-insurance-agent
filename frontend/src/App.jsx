@@ -20,7 +20,6 @@ function App() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Solisa</h1>
-                <span className="text-xs text-gray-500">Insurance That Actually Cares</span>
               </div>
             </div>
 

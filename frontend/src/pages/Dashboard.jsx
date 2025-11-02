@@ -70,63 +70,73 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-          <p className="text-gray-600">Monitor your AI SDR performance in real-time</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Dashboard</h1>
+          <p className="text-gray-600 text-lg">Monitor your AI SDR performance in real-time</p>
         </div>
 
         {/* Stats Grid */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-2">
-                <Users className="w-8 h-8 text-primary-500" />
-                <span className="text-2xl font-bold text-gray-900">{stats.total_leads}</span>
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-blue-100">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Users className="w-6 h-6 text-blue-600" />
+                </div>
+                <span className="text-3xl font-bold text-gray-900">{stats.total_leads}</span>
               </div>
-              <p className="text-sm text-gray-600 font-medium">Total Leads</p>
+              <p className="text-sm text-gray-600 font-semibold">Total Leads</p>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-2">
-                <MessageSquare className="w-8 h-8 text-secondary-500" />
-                <span className="text-2xl font-bold text-gray-900">{stats.sms_sent}</span>
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-green-100">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <MessageSquare className="w-6 h-6 text-green-600" />
+                </div>
+                <span className="text-3xl font-bold text-gray-900">{stats.sms_sent}</span>
               </div>
-              <p className="text-sm text-gray-600 font-medium">SMS Sent</p>
+              <p className="text-sm text-gray-600 font-semibold">SMS Sent</p>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-2">
-                <Mail className="w-8 h-8 text-purple-500" />
-                <span className="text-2xl font-bold text-gray-900">{stats.emails_sent}</span>
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-purple-100">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-purple-600" />
+                </div>
+                <span className="text-3xl font-bold text-gray-900">{stats.emails_sent}</span>
               </div>
-              <p className="text-sm text-gray-600 font-medium">Emails Sent</p>
+              <p className="text-sm text-gray-600 font-semibold">Emails Sent</p>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-2">
-                <Calendar className="w-8 h-8 text-yellow-500" />
-                <span className="text-2xl font-bold text-gray-900">{stats.meetings_booked}</span>
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-yellow-100">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-yellow-600" />
+                </div>
+                <span className="text-3xl font-bold text-gray-900">{stats.meetings_booked}</span>
               </div>
-              <p className="text-sm text-gray-600 font-medium">Meetings Booked</p>
+              <p className="text-sm text-gray-600 font-semibold">Meetings Booked</p>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-2">
-                <TrendingUp className="w-8 h-8 text-red-500" />
-                <span className="text-2xl font-bold text-gray-900">{stats.conversion_rate}%</span>
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-red-100">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-red-600" />
+                </div>
+                <span className="text-3xl font-bold text-gray-900">{stats.conversion_rate}%</span>
               </div>
-              <p className="text-sm text-gray-600 font-medium">Conversion Rate</p>
+              <p className="text-sm text-gray-600 font-semibold">Conversion Rate</p>
             </div>
           </div>
         )}
 
         {/* Leads Table */}
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-bold text-gray-900">Recent Leads</h2>
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+          <div className="px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
+            <h2 className="text-2xl font-bold text-gray-900">Recent Leads</h2>
           </div>
           
           <div className="overflow-x-auto">
